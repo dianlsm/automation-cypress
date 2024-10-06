@@ -10,6 +10,8 @@ describe('Sauce Demo Tests', () => {
 
       // Memastikan berhasil login
       cy.get('.title').should('contain', 'Products');
+      cy.wait(2000); // Menunggu 1 detik (1000 ms)
+
     });
   });
 
@@ -21,6 +23,7 @@ describe('Sauce Demo Tests', () => {
       cy.get('input[name="user-name"]').type('standard_user');
       cy.get('input[name="password"]').type('secret_sauce');
       cy.get('input[type="submit"]').click();
+      cy.wait(2000);
     });
 
     it('Should successfully complete checkout', () => {
@@ -30,6 +33,7 @@ describe('Sauce Demo Tests', () => {
       // Memastikan item dan harga yang dipilih benar
       cy.contains('Sauce Labs Backpack').should('be.visible');
       cy.contains('$29.99').should('be.visible');
+      cy.wait(2000);
       
       cy.get('[data-test="checkout"]').click(); 
 
@@ -37,13 +41,14 @@ describe('Sauce Demo Tests', () => {
       cy.get('[data-test="lastName"]').type('Lesmana');
       cy.get('[data-test="postalCode"]').type('45552');
       cy.get('[data-test="continue"]').click();
+      cy.wait(2000);
       
       cy.get('[data-test="finish"]').click();
 
       // Memastikan berhasil melakukan checkout
       cy.contains('Checkout: Complete!').should('be.visible');
       cy.contains('Thank you for your order!').should('be.visible');
-      
+      cy.wait(2000);
     });
   });
 
@@ -55,12 +60,14 @@ describe('Sauce Demo Tests', () => {
       cy.get('input[name="user-name"]').type('standard_user');
       cy.get('input[name="password"]').type('secret_sauce');
       cy.get('input[type="submit"]').click();
+      cy.wait(2000);
     });
 
     it('Logout successfully', () => {
       cy.get('[data-test="logout-sidebar-link"]').click({ force: true }); // Klik tombol logout
+      cy.wait(2000);
       cy.get('[data-test="login-button"]').should('be.visible');
-
+      cy.wait(2000);
     });
   });
 });
