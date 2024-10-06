@@ -1,6 +1,6 @@
 describe('Sauce Demo Tests', () => {
   describe('Login Test', () => {
-    it('Login successfully', () => {
+    it('Login with valid credential', () => {
       cy.viewport(1280, 720); 
       cy.visit('https://www.saucedemo.com');
 
@@ -10,12 +10,12 @@ describe('Sauce Demo Tests', () => {
 
       // Memastikan berhasil login
       cy.get('.title').should('contain', 'Products');
-      cy.wait(2000); // Menunggu 1 detik (1000 ms)
+      cy.wait(2000); 
 
     });
   });
 
-  describe('Checkout Test', () => {
+  describe('Checkout Product', () => {
     before(() => {
       // Login sebelum melakukan pengujian checkout
       cy.viewport(1920, 1080);
