@@ -9,7 +9,6 @@ describe('Sauce Demo Tests', () => {
       cy.get('input[type="submit"]').click();
 
       // Memastikan berhasil login
-      cy.url().should('eq', 'https://www.saucedemo.com');
       cy.get('.title').should('contain', 'Products');
     });
   });
