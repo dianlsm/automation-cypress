@@ -9,14 +9,14 @@ describe('Sauce Demo Tests', () => {
       cy.get('input[type="submit"]').click();
 
       // Memastikan berhasil login
-      cy.url().should('include', '/inventory.html');
+      cy.url().should('eq', 'https://www.saucedemo.com');
       cy.get('.title').should('contain', 'Products');
     });
   });
 
   describe('Checkout Test', () => {
     before(() => {
-      // Login sebelum melakukan pengujian add to cart
+      // Login sebelum melakukan pengujian checkout
       cy.viewport(1920, 1080);
       cy.visit('https://www.saucedemo.com');
       cy.get('input[name="user-name"]').type('standard_user');
@@ -41,7 +41,7 @@ describe('Sauce Demo Tests', () => {
       
       cy.get('[data-test="finish"]').click();
 
-      // Memastikan berhasil melakukan pembayaran
+      // Memastikan berhasil melakukan checkout
       cy.contains('Checkout: Complete!').should('be.visible');
       cy.contains('Thank you for your order!').should('be.visible');
       
